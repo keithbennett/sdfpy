@@ -1,0 +1,30 @@
+[build-system]
+requires = [
+  "scikit-build-core",
+  "setuptools_scm",
+]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "sdf-py"
+dynamic = ["version"]
+description = "Python module for processing SDF files"
+dependencies = [
+  "numpy",
+]
+authors = [
+     {name = "Keith Bennett", email = "k.bennett@warwick.ac.uk"},
+]
+
+[tool.scikit-build]
+build.targets = ["sdfc_shared"]
+metadata.version.provider = "scikit_build_core.metadata.setuptools_scm"
+build.verbose = true
+build-dir = "build/{wheel_tag}"
+
+[tool.setuptools_scm]
+fallback_version = "0.0.0"
+version_scheme = "post-release" # Development builds are post-releases
+
+[tool.cibuildwheel]
+build = "cp39-*"
