@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-_module_name = "sdf-py"
+_module_name = "sdfr"
 
 from .SDF import read
 from .sdf_helper import *

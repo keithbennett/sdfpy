@@ -34,11 +34,11 @@ def _loadlib():
     # Expect this to fail, but it will trigger a rebuild if the project is
     # installed in editable mode.
     with suppress(ImportError):
-        import sdf-py
+        import sdfr
 
     # Find library in site-packages or local to this module
     local_dir = Path(__file__).resolve().parent
-    site_dirs = [Path(x) / "sdf-py" for x in getsitepackages()]
+    site_dirs = [Path(x) / "sdfr" for x in getsitepackages()]
     path_dirs = [Path(x) for x in sys.path]
     exts = ("so", "dylib", "dll")
     for lib_dir, ext in product([local_dir, *site_dirs, *path_dirs], exts):

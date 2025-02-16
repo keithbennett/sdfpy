@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(sdf-py)
+project(sdfr)
 
 add_subdirectory(src/C C EXCLUDE_FROM_ALL)
 

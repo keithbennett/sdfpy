@@ -6,7 +6,7 @@ requires = [
 build-backend = "scikit_build_core.build"
 
 [project]
-name = "sdf-py"
+name = "sdfr"
 dynamic = ["version"]
 description = "Python module for processing SDF files"
 dependencies = [
