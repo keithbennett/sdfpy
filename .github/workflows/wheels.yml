@@ -37,12 +37,19 @@ jobs:
         with:
           name: cibw-wheels-${{ matrix.os }}-${{ strategy.job-index }}
           path: wheelhouse/*.whl
-  merge:
-    runs-on: ubuntu-latest
+
+  upload_pypi:
     needs: build_wheels
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
     steps:
-      - name: Merge Artifacts
-        uses: actions/upload-artifact/merge@v4
+      - uses: actions/download-artifact@v4
         with:
-          name: all-files
-          pattern: cibw-wheels-*
+          # unpacks all CIBW artifacts into dist/
+          pattern: cibw-*
+          path: dist
+          merge-multiple: true
+
+      - uses: pypa/gh-action-pypi-publish@release/v1
